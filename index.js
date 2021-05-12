@@ -11,7 +11,7 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://'+ process.env.DB_SERVER +':27017/'+ process.env.DB_NAME,
+    `mongodb://${process.env.DB_SERVER}:27017/${process.env.DB_NAME}`,
     { useNewUrlParser: true }
   )
   .then(() => console.log('Database Connected'))

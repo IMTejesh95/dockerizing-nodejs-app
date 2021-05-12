@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const os = require('os');
 
 
 const app = express();
@@ -10,17 +11,17 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/items',
+    'mongodb://'+ process.env.DB_SERVER +':27017/'+ process.env.DB_NAME,
     { useNewUrlParser: true }
   )
-  .then(() => console.log('MongoDB Connected'))
+  .then(() => console.log('Database Connected'))
   .catch(err => console.log(err));
 
 const Item = require('./models/item');
 
 
 app.get('/', (req, res) => {
-  res.send("Hello there!");
+  res.send("Hello from "+ os.hostname() +"...!");
 })
 
 app.get('/items', (req, res) => {
@@ -40,4 +41,4 @@ app.post('/items', (req, res) => {
 
 const port = 3000;
 
-app.listen(port, () => console.log('Server running...'));
+app.listen(port, () => console.log('Server listning on port '+ port));

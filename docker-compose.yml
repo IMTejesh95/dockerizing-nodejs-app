@@ -6,10 +6,9 @@ services:
     environment:
       - DB_SERVER=mongo
       - DB_NAME=items
-      - PORT=8000
     build: .
     ports:
-      - '80:8000'
+      - '80:3000'
     links:
       - mongo
   mongo:

@@ -24,13 +24,14 @@ spec:
         - name: DB_SERVER
           valueFrom: 
             configMapKeyRef:
-              name: mongodb-configmap
+              name: app-config
               key: database_url
         - name: DB_NAME
           valueFrom: 
             configMapKeyRef:
-              name: mongodb-configmap
+              name: app-config
               key: database_name
+
 ---
 apiVersion: v1
 kind: Service

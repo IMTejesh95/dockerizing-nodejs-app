@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: mongo-express
-        image: docker.io/itejas19/express-app:4.0
-        imagePullPolicy: Never
+        image: docker.io/itejas19/express-app:5.0
         ports:
         - containerPort: 3000
         env:

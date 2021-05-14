@@ -14,7 +14,7 @@ const itemRouter = require('./routes/itemRouter')(Item);
 // Connect to MongoDB
 mongoose
   .connect(
-    `mongodb://${process.env.DB_SERVER}:27017/${process.env.DB_NAME}`,
+    `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_SERVER}:27017/${process.env.DB_NAME}`,
     { useNewUrlParser: true }
   )
   .then(() => console.log('Database Connected'))

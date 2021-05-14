@@ -6,7 +6,7 @@ services:
     environment:
       - DB_SERVER=mongo
       - DB_NAME=items
-    build: .
+    image: itejas19/express-app:5.0
     ports:
       - '80:3000'
     links:

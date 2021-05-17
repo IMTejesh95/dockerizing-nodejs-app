@@ -1,18 +1,17 @@
 version: '3'
 services:
   app:
-    container_name: node-items-api
     restart: always
     environment:
       - DB_USERNAME=admin
       - DB_PASSWORD=admin
       - DB_SERVER=mongo
-    image: express-app:7.0
+    image: express-swagger-app:1.0
     ports:
-      - '3000:3000'
-
+      - '30000:3000'
+    depends_on:
+      - mongo
   mongo:
-    container_name: mongo
     image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
@@ -34,16 +33,16 @@ services:
 
 # docker network create mongo-express-app
 
-# docker run -d --network mongo-express-app \
+# docker run -d --network express-app \
 # -e MONGO_INITDB_ROOT_USERNAME=admin \
 # -e MONGO_INITDB_ROOT_PASSWORD=admin \
 # -p 27017:27017 \
 # --name mongo mongo
 
 
-# docker run -d --network mongo-express-app \
+# docker run -d --network express-app \
 # -e DB_USERNAME=admin \
 # -e DB_PASSWORD=admin \
 # -e DB_SERVER=mongo \
-# -p 3000:3000  \
-# --name express-app express-app:7.0
+# -p 30000:3000  \
+# --name express-app express-swagger-app:1.0

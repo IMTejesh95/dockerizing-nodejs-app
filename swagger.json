@@ -1,0 +1,152 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Node js express and mongo application",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:30000",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "Items",
+        "description": "API for items in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/items": {
+        "get": {
+          "tags": [
+            "Items"
+          ],
+          "summary": "Get all Items in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Items"
+              }
+            }
+          }
+        },
+        "post": {
+            "tags": [
+              "Items"
+            ],
+            "description": "Create new Item in system",
+            "parameters": [
+              {
+                "name": "Item",
+                "in": "body",
+                "description": "Item that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/Item"
+                }
+              }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "New Item is created",
+                "schema": {
+                  "$ref": "#/definitions/Item"
+                }
+              }
+            }
+          }        
+      },
+      "/items/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of Item that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Items"
+          ],
+          "summary": "Get Item with given ID",
+          "responses": {
+            "200": {
+              "description": "Item is found",
+              "schema": {
+                "$ref": "#/definitions/Item"
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update Item with give ID",
+          "tags": [
+            "Items"
+          ],
+          "parameters": [
+            {
+              "name": "Item",
+              "in": "body",
+              "description": "Item with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Item"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Item is updated",
+              "schema": {
+                "$ref": "#/definitions/Item"
+              }
+            }
+          }
+        },
+        "delete": {
+            "summary": "Delete Item with given ID",
+            "tags": [
+              "Items"
+            ],
+            "responses": {
+              "200": {
+                "description": "Item is deleted",
+                "schema": {
+                  "$ref": "#/definitions/Item"
+                }
+              }
+            }
+          }        
+      }
+    },
+    "definitions": {
+      "Item": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Items": {
+        "type": "array",
+        "$ref": "#/definitions/Item"
+      }
+    }
+  }
+
+
+

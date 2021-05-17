@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const os = require('os');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -28,6 +30,11 @@ app.get('/', (req, res) => {
 
 
 // Routes
+var options = {
+  explorer: true
+};
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 app.use('/api', itemRouter);
 
 

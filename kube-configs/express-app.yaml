@@ -16,20 +16,11 @@ spec:
     spec:
       containers:
       - name: express-app
-        image: docker.io/itejas19/express-app:6.0
+        image: express-app:7.0
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
         env:
-        - name: DB_SERVER
-          valueFrom: 
-            configMapKeyRef:
-              name: app-config
-              key: database_url
-        - name: DB_NAME
-          valueFrom: 
-            configMapKeyRef:
-              name: app-config
-              key: database_name
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
@@ -39,7 +30,12 @@ spec:
           valueFrom: 
             secretKeyRef:
               name: mongodb-secret
-              key: mongo-password              
+              key: mongo-password
+        - name: DB_SERVER
+          valueFrom: 
+            configMapKeyRef:
+              name: app-config
+              key: database_url      
 
 ---
 apiVersion: v1

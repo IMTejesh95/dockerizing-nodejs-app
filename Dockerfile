@@ -1,13 +1,17 @@
-FROM node:14
+FROM alpine
+
+LABEL maintainer="chauragade.tejesh@gmail.com"
+
+RUN apk add --update nodejs npm
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install
 
-COPY . .
-
 EXPOSE 3000
 
-CMD ["npm", "start"]
+ENTRYPOINT ["npm"]
+
+CMD ["start"]

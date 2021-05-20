@@ -6,7 +6,7 @@ services:
       - DB_USERNAME=admin
       - DB_PASSWORD=admin
       - DB_SERVER=mongo
-    image: express-swagger-app:1.0
+    image: express-app:8-alpine
     ports:
       - '30000:3000'
     depends_on:

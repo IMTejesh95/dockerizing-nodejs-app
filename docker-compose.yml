@@ -31,7 +31,7 @@ services:
 
 ## Manual way
 
-# docker network create mongo-express-app
+# docker network create express-app
 
 # docker run -d --network express-app \
 # -e MONGO_INITDB_ROOT_USERNAME=admin \
